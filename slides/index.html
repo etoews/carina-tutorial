@@ -43,12 +43,12 @@
           <h4>Python web application development</h4>
           <h5>with Docker Swarm on Carina</h5>
           <img src="img/docker-swarm.png"/>
-          <h4>Open <a href="http://rack.to/carina-tutorial">rack.to/carina-tutorial</a></h4>
+          <h4><a href="http://rack.to/carina-tutorial">rack.to/carina-tutorial</a></h4>
           <p style="font-size: 50%;">Use the arrow keys to navigate</p>
         </section>
 
         <section id="instructors">
-          <h3>Instructors</h3>
+          <h3>Instructor</h3>
           <center>
             <table>
               <tbody>
@@ -75,6 +75,11 @@
             <ol>
               <li><a href="#/docker">Docker</a></li>
               <li><a href="#/carina">Carina</a></li>
+              <li><a href="#/getting-started">Getting Started on Carina</a></li>
+              <li><a href="#/python-web-app">Develop a Python web application</a></li>
+              <li><a href="#/help">Help!</a></li>
+              <li><a href="#/plan-b">Plan B</a></li>
+              <li><a href="#/wrap-up">Wrap Up</a></li>
             </ol>
           </span>
         </section>
@@ -116,8 +121,15 @@
               <li>Previously we did this with VMs.</li>
               <li>The student with the lovely MOTD.</li>
               <li>The students who got owned and had 3.4 TB outgoing bandwidth and $700 of charges.</li>
+              <li>The students who lost everything when their VM died.</li>
+              <li>There's Just No Getting around It: You're Building a Distributed System</li>
             </ul>
           </aside>
+        </section>
+
+        <section>
+          <h3>Jobs</h3>
+          <img src="img/jobgraph.png"/>
         </section>
 
         <section>
@@ -131,7 +143,7 @@
           <aside class="notes">
             <ul>
               <li>Docker is a process that restricts a container's access to the host</li>
-              <li>A container is a process(es) with restricted access to the host</li>
+              <li>A container is a child process (of the Docker process) with restricted access to the host</li>
             </ul>
           </aside>
         </section>
@@ -201,15 +213,139 @@
 
 <!-- ********************************************************************** -->
 
+        <section id="getting-started">
+          <h1 style="color:DeepSkyBlue">Getting started</h1>
+          <h1 style="color:DeepSkyBlue">on Carina</h1>
+        </section>
+
+        <section>
+          <h3>Tutorial</h3>
+          <a href="https://getcarina.com/docs/getting-started/getting-started-on-carina/" target="_blank">Getting started on Carina</a>
+        </section>
+
+<!-- ********************************************************************** -->
+
+        <section id="python-web-app">
+          <h1 style="color:DeepSkyBlue">Develop a Python</h1>
+          <h1 style="color:DeepSkyBlue">web application</h1>
+        </section>
+
+        <section>
+          <h3>Tutorial</h3>
+          <a href="https://getcarina.com/docs/tutorials/develop-a-python-web-application/" target="_blank">Develop a Python web application</a>
+        </section>
+
+<!-- ********************************************************************** -->
+
+        <section id="help">
+          <h1 style="color:DeepSkyBlue">Help!</h1>
+          <aside class="notes">
+            <ul>
+              <li>It's the first semester doing this so there's bound to be some bumps in the road</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <h3>Start by helping yourself</h3>
+          <h3>Repeat after me 3 times</h3>
+        </section>
+
+        <section>
+          <h3>The cloud will eat my homework</h3>
+        </section>
+
+        <section>
+          <h3>Backup backup backup</h3>
+          <a href="" target="_blank"># TODO Backup tutorial</a>
+        </section>
+
+        <section>
+          <h3>Commit all code to GitHub</h3>
+          <h3>But not your secrets!</h3>
+          <a href="https://github.com/getcarina/examples/blob/master/python-web-app/.gitignore#L2" target="_blank">.gitignore</a>
+        </section>
+
+        <section>
+          <h3>Troubleshooting</h3>
+          <a href="https://getcarina.com/docs/#troubleshooting" target="_blank">Troubleshooting articles</a>
+          <a href="http://lmgtfy.com/" target="_blank">LMGTFY</a>
+        </section>
+
+        <section>
+          <h3>Community Support</h3>
+          <a href="https://community.getcarina.com/" target="_blank">Carina Forums</a>
+        </section>
+
+<!-- ********************************************************************** -->
+
+        <section id="plan-b">
+          <h1 style="color:DeepSkyBlue">Plan B</h1>
+        </section>
+
+        <section>
+          <h3>⚠︎ Bad idea ⚠︎</h3>
+          <h3>Treat a container like a VM</h3>
+        </section>
+
+        <section>
+          <h3>Run a container and an app</h3>
+          <pre><code class="bash" data-trim data-noescape>
+$ docker run --name no-fun -it --publish 80:5000 python:3.5 /bin/bash
+
+$ git clone https://github.com/everett-toews/hello-world.git
+
+$ cd hello-world
+
+$ pip install -r requirements.txt
+
+$ python app.py
+          </code></pre>
+          <p>Use Ctrl+p Ctrl+q to detach from the container</p>
+        </section>
+
+        <section>
+          <h3>Open the app and exec back in</h3>
+          <pre><code class="bash" data-trim data-noescape>
+$ docker-machine ip default # on VirtualBox and go to IP address
+
+$ docker port no-fun 5000 # on Carina and go to IP address
+
+$ docker logs no-fun
+
+$ docker exec -it no-fun /bin/bash
+          </code></pre>
+        </section>
+
+        <section>
+          <h3>Make a change</h3>
+          <pre><code class="bash" data-trim data-noescape>
+# cd hello-world
+
+# sed -i "s/World/Carina/g" app.py
+
+# exit
+          </code></pre>
+          <p>Reload your browser</p>
+        </section>
+
+        <section>
+          <h3>⚠︎ Bad idea ⚠︎</h3>
+          <h3>The cloud will eat my homework</h3>
+          <h3>GOTO <a href="#help">Help!</a></h3>
+        </section>
+
+
+<!-- ********************************************************************** -->
+
         <section id="wrap-up">
           <h1 style="color:DeepSkyBlue">Wrap up</h1>
         </section>
 
         <section>
           <h1>Thanks!</h1>
-          <ul>
-            <li><a href="https://rax.io/workshops-feedback" target="_blank">Feedback survey</a></li>
-          </ul>
+          <p><a href="https://twitter.com/everett_toews" target="_blank">@everett_toews</a></p>
+          <p><a href="http://rack.to/carina-tutorial">rack.to/carina-tutorial</a></p>
         </section>
 
 <!-- ********************************************************************** -->
