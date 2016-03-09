@@ -207,6 +207,19 @@
         </section>
 
         <section>
+          <h3>Carina Constraints</h3>
+          <ul>
+            <li>Cannot do volume mounts</li>
+            <ul>
+              <li>Except for `-v /var/run/docker.sock:/var/run/docker.sock`</li>
+              <li><a href="https://getcarina.com/docs/tutorials/data-volume-containers/" target="_blank">Use data volume containers</a> instead</li>
+            </ul>
+            <li>Cannot use `--privileged`, `--cap-add`, or `--cap-drop`</li>
+            <li>AppArmor restrictions</li>
+          </ul>
+        </section>
+
+        <section>
           <h3>Think above the whale</h3>
           <img src="img/docker-swarm.png"/>
         </section>
